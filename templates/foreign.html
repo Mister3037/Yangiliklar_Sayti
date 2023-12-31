@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Xorij Xabarlar {% endblock title %}
+
+
+
+{% block content %}
+
+<section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="single_post_content">
+            <h2><span>Xorij</span></h2>
+            <div class="single_post_content_left">
+              <ul class="business_catgnav  wow fadeInDown">
+                {% for xorij in xorij_yangiliklar %}
+                  {% if forloop.first %}
+                <li>
+                  <figure class="bsbig_fig"> <a href="{{xorij.get_absolute_url}}" class="featured_img"> <img alt="" src="{{xorij.rasm.url}}"> <span class="overlay"></span> </a>
+                    <figcaption> <a href="{{mahalliy.get_absolute_url}}">{{ xorij.sarlavha }}</a> </figcaption>
+                    <p><a href="{{mahalliy.get_absolute_url}}">{{xorij.matn}} </a></p>
+                  </figure>
+                </li>
+                    {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="single_post_content_right">
+              <ul class="spost_nav">
+                {% for xorij in xorij_yangiliklar %}
+                  {% if forloop.counter > 1 %}
+                <li>
+                  <div class="media wow fadeInDown"> <a href="{{xorij.get_absolute_url}}" class="media-left"> <img alt="" src={{xorij.rasm.url}}> </a>
+                    <div class="media-body"> <a href="{{xorij.get_absolute_url}}" class="catg_title">{{xorij.sarlavha}}</a> </div>
+                  </div>
+                </li>
+                      {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+{% endblock content %}
