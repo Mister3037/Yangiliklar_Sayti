@@ -9,6 +9,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 
+
 @admin.register(Yangiliklar)
 class YangiliklarAdmin(admin.ModelAdmin):
     list_display = ["sarlavha", "sl_url", "publish_time", "status", "category"]

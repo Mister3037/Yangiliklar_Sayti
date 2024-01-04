@@ -1,13 +1,14 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView, ListView
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, ListView, UpdateView, DeleteView
 from .models import *
 from .forms import *
 
 # Create your views here.
 
-def yangilik_detail(request, yangilik):
-    yangiliklar = get_object_or_404(Yangiliklar, sl_url=yangilik)
+def yangilik_detail(request, slug):
+    yangiliklar = get_object_or_404(Yangiliklar, sl_url=slug)
     context = {
         'yangilik': yangiliklar
     }
@@ -115,6 +116,19 @@ class XorijYangiliklarView(ListView):
     def get_queryset(self):
         yangiliklar = Yangiliklar.objects.all().filter(category__nom="Xorij").order_by("-publish_time")
         return yangiliklar
+
+
+class UpdateYangilikNews(UpdateView):
+    model = Yangiliklar
+    fields = ["sarlavha", "matn", "rasm", "category", "status",]
+    template_name = "update.html"
+    form_class = YangilikForm
+
+
+
+class DeleteYangilikNews(DeleteView):
+    model = Yangiliklar
+    template_name = 'delete.html'
 
 
 

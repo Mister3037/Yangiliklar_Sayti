@@ -17,9 +17,9 @@
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="slick_slider">
           {% for i in yangiliklar %}
-          <div class="single_iteam"> <a href={{i.get_absolute_url}}> <img src="{{ i.rasm.url }}" alt=""></a>
+          <div class="single_iteam"> <a href="{% url 'update_news' i.slug %}> <img src="{{ i.rasm.url }}" alt=""></a>
             <div class="slider_article">
-              <h2><a class="slider_tittle" href="{{i.get_absolute_url}}">{{i.sarlavha}}</a></h2>
+              <h2><a class="slider_tittle" href="{% url 'update_news' i.slug %}">{{i.sarlavha}}</a></h2>
             </div>
           </div>
           {% endfor %}

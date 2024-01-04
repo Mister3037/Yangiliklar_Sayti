@@ -7,7 +7,7 @@
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="slick_slider">
           {% for i in yangiliklar %}
-          <div class="single_iteam"> <a href={{i.get_absolute_url}}> <img src="{{ i.rasm.url }}" alt=""></a>
+          <div class="single_iteam"> <a href="{{i.get_absolute_url}}"> <img src="{{ i.rasm.url }}" alt=""></a>
             <div class="slider_article">
               <h2><a class="slider_tittle" href="{{i.get_absolute_url}}">{{i.sarlavha}}</a></h2>
             </div>
@@ -24,7 +24,7 @@
               {% for i in yangiliklar %}
               <li>
                 <div class="media"> <a href="{{i.get_absolute_url}}" class="media-left"> <img alt="" src="{{i.rasm.url}}"> </a>
-                  <div class="media-body"> <a href="{{i.get_absolute_url}}" class="catg_title">{{i.sarlavha}}</a> </div>
+                  <div class="media-body"> <a href="{% url 'i.get_absolute_url' slug=i.sl_url %}" class="catg_title">{{i.sarlavha}}</a> </div>
                 </div>
               </li>
               {% endfor %}

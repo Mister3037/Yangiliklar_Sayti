@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} {{yangilik.sarlavha}} {% endblock title %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+
+<h3 class="text-center"> Joriy yangilikni o'chirish </h3>
+    <form method="post">{% csrf_token %}
+        <p>{{yangilik.sarlavha | truncatewords:3}}... yangilikni o'chirmoqchimisiz?</p>
+        <button type="submit" class="btn btn-danger ml-2">Tasdiqlash</button>
+
+    </form>
+
+
+{% endblock content %}
